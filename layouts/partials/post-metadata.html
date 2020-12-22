@@ -10,7 +10,7 @@
         {{- range .current.Params.topics -}}
         {{- if or (not $.parent.Data.topic) (ne . $.parent.Data.Term) }}
         <span class="topic">
-            <i class="material-icons">link</i><a href="{{ "/topics/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            <i class="material-icons" aria-hidden="true">link</i><a href="{{ "/topics/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
             &nbsp;
         </span>
         {{- end -}}
@@ -20,7 +20,7 @@
         {{- range .current.Params.opensource -}}
         {{- if or (not $.parent.Data.opensource) (ne . $.parent.Data.Term) }}
         <span class="opensource">
-            <i class="material-icons">label</i><a href="{{ "/opensource/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            <i class="material-icons" aria-hidden="true">label</i><a href="{{ "/opensource/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
             &nbsp;
         </span>
         {{- end -}}
@@ -28,7 +28,7 @@
     {{- end }}
     {{- if eq .current.Type "blog" }}
         <span class="reading-time">
-        <i class="material-icons">schedule</i>
+        <i class="material-icons" aria-hidden="true">schedule</i>
         {{- $minutes := .current.ReadingTime -}}
         {{- if gt $minutes 0 -}}
         {{- i18n "minutes" $minutes -}}
