@@ -1,4 +1,5 @@
 <div class="post-metadata">
+    <!-- Article publication date -->
     {{- with .current.PublishDate }}
     <span class="publication-date">
         {{ i18n "published_on" }}
@@ -6,26 +7,32 @@
     </span>
     {{- end }}
 
-    {{- if gt .current.Params.topics 0 -}}
-        {{- range .current.Params.topics -}}
-        {{- if or (not $.parent.Data.topic) (ne . $.parent.Data.Term) }}
-        <span class="topic">
-            <i class="material-icons" aria-hidden="true">link</i><a href="{{ "/topics/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-            &nbsp;
-        </span>
-        {{- end -}}
-        {{- end -}}
+    <!-- Expertise / Topics -->
+    {{ range .current.Params.topics -}}
+    <!-- Skip the item if we are on the term page presenting this item -->
+    {{- if or (not $.parent.Data.topic) (ne . $.parent.Data.Term) }}
+    <span class="topic">
+        <i class="material-icons" aria-hidden="true">link</i><a href="{{ "/topics/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        &nbsp;
+    </span>
+    {{- end -}}
     {{- end }}
-    {{- if gt .current.Params.opensource 0 -}}
-        {{- range .current.Params.opensource -}}
-        {{- if or (not $.parent.Data.opensource) (ne . $.parent.Data.Term) }}
-        <span class="opensource">
-            <i class="material-icons" aria-hidden="true">label</i><a href="{{ "/opensource/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-            &nbsp;
-        </span>
-        {{- end -}}
-        {{- end -}}
+
+    <!-- Open Source communities -->
+    {{ range .current.Params.opensource -}}
+    <!-- Skip the item if we are on the term page presenting this item -->
+    {{- if or (not $.parent.Data.opensource) (ne . $.parent.Data.Term) }}
+    <span class="opensource">
+        <i class="material-icons" aria-hidden="true">label</i><a href="{{ "/opensource/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        &nbsp;
+    </span>
+    {{- end -}}
     {{- end }}
+
+    <!--
+      -- The reading time is only displayed on blog posts. Other kind of
+      -- articles are too short to be relevant.
+      -->
     {{- if eq .current.Type "blog" }}
         <span class="reading-time">
         <i class="material-icons" aria-hidden="true">schedule</i>
