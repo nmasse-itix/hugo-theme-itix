@@ -779,6 +779,15 @@ mjx-container {
   }
 }
 
+@media screen and (max-width: 512px) {
+  /*
+   * On mobile, hide some post metadata
+   */
+  .post-metadata .opensource, .post-metadata .topic, .post-metadata .reading-time {
+    display: none;
+  }
+}
+
 /*
  * Tweaks for printing
  */
