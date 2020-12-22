@@ -1,0 +1,40 @@
+<head>
+<title>{{.Title}}</title>
+<meta charset="utf-8">
+
+{{ if .IsHome -}}
+<meta name="description" content="{{ .Site.Params.description }}">
+{{- else -}}
+<meta name="description" content="{{ .Params.description }}">
+{{- end }}
+
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+
+<!-- The chroma syntax highlighter needs a separate CSS that can be generated using "hugo gen chromastyles --style=your-style > static/css/chroma.css" -->
+<link rel="stylesheet" href="/css/chroma.css">
+<link rel="stylesheet" href="/css/itix.css">
+
+{{- if .Params.enableMathJax -}}
+  {{- partial "mathjax.html" . -}}
+{{- end -}}
+
+{{- partial "lang-detection.html" . -}}
+{{- if .IsTranslated -}}
+{{- range .Translations -}}
+{{- if .Scratch.Get "en_article_in_fr_site" -}}
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="robots" content="noindex">
+{{ else }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">
+{{ end -}}
+{{- end -}}
+{{- end -}}
+
+</head>

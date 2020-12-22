@@ -1,0 +1,12 @@
+<!-- the baseof.html layout is the entrypoint for every page -->
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+{{ partial "head.html" . }}
+<body>
+{{ partial "menu.html" . }}
+{{ partial "toolbar.html" . }}
+<main>
+{{ block "main" . }}{{- end }}
+</main>
+</body>
+</html>

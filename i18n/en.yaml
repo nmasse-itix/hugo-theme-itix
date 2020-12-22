@@ -1,0 +1,24 @@
+- id: last_modify_on
+  translation: Last modified on
+- id: published_on
+  translation: Published on
+- id: date_format
+  translation: "January 2, 2006"
+- id: toc
+  translation: Table of contents
+- id: back_to_top
+  translation: Top of the page
+- id: minutes
+  translation:
+    one: '{{ .Count }} minute'
+    other: '{{ .Count }} minutes'
+- id: continue_reading
+  translation: Continue reading
+- id: articles_related_to
+  translation: Articles related to
+- id: recent_articles
+  translation: Recent articles
+- id: not_found
+  translation: This page does not exist!
+- id: go_home
+  translation: Go Home

@@ -1,0 +1,38 @@
+<div class="post-metadata">
+    {{- with .current.PublishDate }}
+    <span class="publication-date">
+        {{ i18n "published_on" }}
+        <time itemprop="published-on" date-time="{{ .Format "2006-01-02" }}">{{ .Format (i18n "date_format") }}</time>
+    </span>
+    {{- end }}
+
+    {{- if gt .current.Params.topics 0 -}}
+        {{- range .current.Params.topics -}}
+        {{- if or (not $.parent.Data.topic) (ne . $.parent.Data.Term) }}
+        <span class="topic">
+            <i class="material-icons">link</i><a href="{{ "/topics/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            &nbsp;
+        </span>
+        {{- end -}}
+        {{- end -}}
+    {{- end }}
+    {{- if gt .current.Params.opensource 0 -}}
+        {{- range .current.Params.opensource -}}
+        {{- if or (not $.parent.Data.opensource) (ne . $.parent.Data.Term) }}
+        <span class="opensource">
+            <i class="material-icons">label</i><a href="{{ "/opensource/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            &nbsp;
+        </span>
+        {{- end -}}
+        {{- end -}}
+    {{- end }}
+    {{- if eq .current.Type "blog" }}
+        <span class="reading-time">
+        <i class="material-icons">schedule</i>
+        {{- $minutes := .current.ReadingTime -}}
+        {{- if gt $minutes 0 -}}
+        {{- i18n "minutes" $minutes -}}
+        {{- end -}}
+        </span>
+    {{- end }}
+</div>
