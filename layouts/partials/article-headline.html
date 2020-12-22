@@ -7,5 +7,5 @@
 {{ end }}
 </a></h4>
 {{- partial "post-metadata.html" . -}}
-<p>{{ .current.Summary }} <a href="{{ .current.RelPermalink }}" class="continue-reading">{{ i18n "continue_reading" }}</a></p>
+<p>{{ .current.Summary | plainify | htmlUnescape }} <a href="{{ .current.RelPermalink }}" class="continue-reading">{{ i18n "continue_reading" }}</a></p>
 </section>
