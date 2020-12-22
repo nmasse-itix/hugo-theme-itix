@@ -6,8 +6,9 @@
     </header>
     {{ i18n "articles_related_to" }} <a href="{{.Parent.RelPermalink}}">{{.Parent.Title}}</a> / <a href="{{.RelPermalink}}">{{ .Title }}</a>:
     {{ .Content }}
-    {{ range (sort .Pages "Title") }}
+    {{ range (.Paginate (sort .Pages "Date").Reverse).Pages }}
     {{- partial "article-headline.html" (dict "current" . "parent" $.Page) -}}
     {{ end }}
+    {{ template "_internal/pagination.html" . }}
 </article>
 {{ end }}

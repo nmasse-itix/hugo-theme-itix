@@ -6,8 +6,9 @@
     </header>
     {{ .Content }}
 
-    {{ range (sort .Pages "Date").Reverse }}
+    {{ range (.Paginate (sort .Pages "Date").Reverse).Pages }}
     {{- partial "article-headline.html" (dict "current" . "parent" $.Page) -}}
     {{ end }}
+    {{ template "_internal/pagination.html" . }}
 </article>
 {{ end }}

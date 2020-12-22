@@ -19,6 +19,7 @@
   --quote-border-color: #589bdd;
   --codeblock-background-color: #ebf2f9;
   --toc-background-color: #f0f5fa;
+  --pagination-disabled-color: #555;
 
   /*
    * Layout
@@ -300,6 +301,28 @@ pre:hover {
   margin-right: 5px;
 }
 
+/*
+ * Pagination
+ */
+.pagination {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  font-size: larger;
+}
+
+.pagination .page-item {
+  display: inline;
+  margin: 5px;
+}
+
+.pagination .disabled {
+  color: var(--pagination-disabled-color);
+}
+
+.pagination .active {
+  font-weight: bold;
+}
 
 /*
  * Article list
