@@ -2,8 +2,7 @@
   /*
    * Theme colors
    */
-  --main-color-decimal: 25, 118, 210; /* main-color */
-  --main-color: var(--main-color-decimal);
+  --main-color: #1976d2;
   --main-background-color: #fcfcfc;
   --alternate-text-color: #145ca4;
   --main-text-color: #092949; /* 50% darker than main-color */
@@ -24,8 +23,6 @@
   /*
    * Layout
    */
-  --heading1-size: 30px;
-  --heading-diff: 3px;
   --menu-container-width: 25%;
   --toolbar-container-width: 25%;
 
@@ -165,34 +162,32 @@ h1, h2, h3 {
   line-height: 1.5em;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 20px 0;
+}
+
 h1 {
-  font-size: var(--heading1-size);
-  margin: 20px auto;
+  font-size: 30px;
 }
 
 h2 {
-  font-size: calc(var(--heading1-size) - 2 * var(--heading-diff));
-  margin: 20px auto;
+  font-size: 24px;
 }
 
 h3 {
-  font-size: calc(var(--heading1-size) - 3 * var(--heading-diff));
-  margin: 20px auto;
+  font-size: 21px;
 }
 
 h4 {
-  font-size: calc(var(--heading1-size) - 3 * var(--heading-diff));
-  padding: 20px auto;
+  font-size: 21px;
 }
 
 h5 {
-  font-size: calc(var(--heading1-size) - 3 * var(--heading-diff)) - 1;
-  padding: 10px auto;
+  font-size: 20px;
 }
 
 h6 {
-  font-size: calc(var(--heading1-size) - 3 * var(--heading-diff)) - 2;
-  padding: 10px auto;
+  font-size: 19px;
 }
 
 figure {
@@ -221,7 +216,6 @@ table {
 }
 
 button {
-  cursor: hand;
   cursor: pointer;
 }
 
@@ -424,7 +418,6 @@ article header h4 {
 .menu-head, .menu-link-list a, .menu-head:hover, .menu-link-list a:hover {
   display: block;
   text-decoration: none !important;
-  cursor: hand;
   cursor: pointer;
   border-right: 2px solid transparent;
 }
@@ -496,11 +489,11 @@ article header h4 {
  */
 .menu input.hamburger-menu {
   display: block;
-  width: 40px;
-  height: 32px;
+  width: 80px;
+  height: 72px;
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 0px;
+  left: 0px;
   margin: 0;
 
   cursor: pointer;
@@ -608,7 +601,6 @@ article header h4 {
   align-items: center;
   justify-items: center;
   width: 64px;
-  cursor: hand;
   cursor: pointer;
   padding: 15px 0;
 }

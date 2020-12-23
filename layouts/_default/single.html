@@ -1,10 +1,11 @@
 {{ define "main" }}
 <!-- The "single" layout prints a single post -->
-<article class="post">
+{{- partial "lang-detection.html" . -}}
+<article class="post" {{ if .Scratch.Get "en_article_in_fr_site" }}lang="en"{{ end }}>
     <header>
         <h1>{{ .Title }}</h1>
-        {{- if .Params.description }}
-        <h4>{{ .Params.description }}</h4>
+        {{- with .Description }}
+        <h4>{{ . }}</h4>
         {{- end }}
         {{ partial "post-metadata.html" (dict "current" . "parent" .) -}}
     </header>
