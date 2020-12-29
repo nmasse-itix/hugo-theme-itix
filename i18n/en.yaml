@@ -22,3 +22,15 @@
   translation: This page does not exist!
 - id: go_home
   translation: Go Home
+- id: search
+  translation: Search
+- id: search_here
+  translation: Search something...
+- id: type_blog
+  translation: Article
+- id: type_writing
+  translation: Writing
+- id: type_speaking
+  translation: Speaking
+- id: type_page
+  translation: Misc.

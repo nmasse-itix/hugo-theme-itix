@@ -34,6 +34,15 @@
 <link rel="stylesheet" href="/css/chroma.css">
 <link rel="stylesheet" href="/css/itix.css">
 
+<!-- The search page is the only one to require Javascript -->
+{{ if eq .Type "search" }}
+<!--
+  -- Download and copy over fuse.js file from fusejs.io.
+  -- I used the UMD build, minified, version 6.4.3
+  -->
+<script src="/js/fuse.js"></script>
+{{ end }}
+
 {{- if .Params.enableMathJax -}}
   {{- partial "mathjax.html" . -}}
 {{- end -}}
