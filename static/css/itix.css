@@ -779,6 +779,14 @@ mjx-container {
     /* Below the hamburger menu, the menu content but over the article content */
     z-index: 250;  
   }
+
+  /*
+   * Leave some room between the list items in the term pages so that it is
+   * easier to click on mobile. Also makes Google happy.
+   */
+  .terms ul li {
+    line-height: 2em;
+  }
 }
 
 @media screen and (max-width: 512px) {
