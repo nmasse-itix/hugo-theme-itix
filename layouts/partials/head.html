@@ -2,6 +2,30 @@
 <title>{{.Title}}</title>
 <meta charset="utf-8">
 
+<!--
+  -- Package all CSS files together and minify them.
+  -- The page loading time should improve.
+  -->
+{{ $chroma := resources.Get "css/chroma.css" }}
+{{ $itix := resources.Get "css/itix.css" }}
+{{ $css := slice $chroma $itix | resources.Concat "css/itix.css" | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+<!--
+  -- Core Web Vitals / Cumulative Layout Shift.
+  --
+  -- Preload all fonts and images to reduce layout shifts.
+  -->
+<link rel="preload" href="/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/fonts/JetBrainsMono-Regular.woff" as="font" type="font/woff" crossorigin="anonymous">
+<link rel="preload" href="/fonts/JetBrainsMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/fonts/SourceSerifPro-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/fonts/SourceSansPro-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/fonts/material-icons.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/fonts/material-icons.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/icons/en.svg" as="image" type="image/svg+xml">
+<link rel="preload" href="/icons/fr.svg" as="image" type="image/svg+xml">
+
 {{ if .IsHome -}}
 <meta name="description" content="{{ .Site.Params.description }}">
 {{- else -}}
@@ -29,10 +53,6 @@
 
 {{ template "_internal/opengraph.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
-
-<!-- The chroma syntax highlighter needs a separate CSS that can be generated using "hugo gen chromastyles --style=your-style > static/css/chroma.css" -->
-<link rel="stylesheet" href="/css/chroma.css">
-<link rel="stylesheet" href="/css/itix.css">
 
 <!-- The search page is the only one to require Javascript -->
 {{ if eq .Type "search" }}

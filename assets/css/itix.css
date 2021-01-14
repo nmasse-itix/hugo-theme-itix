@@ -1,8 +1,8 @@
 :root {
   /*
-   * Theme colors
+   * Theme colors 
    */
-  --main-color: #1976d2;
+  --main-color: #1975d2; /* Adjusted to ensure a 4.5:1 contrast ratio for accessibility */
   --main-background-color: #fcfcfc;
   --alternate-text-color: #145ca4;
   --main-text-color: #092949; /* 50% darker than main-color */
@@ -29,9 +29,9 @@
   /*
    * Fonts
    */
-  --default-font-list: "Source Serif Pro";
+  --default-font-list: "Source Serif Pro", serif;
   --mono-font-list: "JetBrains Mono", monospace;
-  --sans-preferred-font-list: "Source Sans Pro";
+  --sans-preferred-font-list: "Source Sans Pro", sans-serif;
 
 }
 
@@ -45,6 +45,13 @@
     url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+
+  /* 
+   * Core Web Vitals / Cumulative Layout Shift.
+   *
+   * Avoid showing invisible text while custom fonts load.
+   */
+  font-display: swap;
 }
 
 @font-face{
@@ -52,6 +59,13 @@
   src: url('/fonts/SourceSerifPro-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+
+  /* 
+   * Core Web Vitals / Cumulative Layout Shift.
+   *
+   * Avoid showing invisible text while custom fonts load.
+   */
+   font-display: swap;
 }
 
 @font-face{
@@ -59,6 +73,13 @@
   src: url('/fonts/SourceSansPro-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+
+  /* 
+   * Core Web Vitals / Cumulative Layout Shift.
+   *
+   * Avoid showing invisible text while custom fonts load.
+   */
+   font-display: swap;
 }
 
 @font-face {
@@ -290,7 +311,6 @@ pre:hover {
  * i18n
  */
 .tiny-flag {
-  height: 0.9rem;
   vertical-align: middle;
   margin-left: 5px;
   margin-right: 5px;

@@ -43,12 +43,12 @@
             {{- if .IsTranslated -}}
             <!-- Try to redirect the user to the translated page if possible -->
             {{- range .AllTranslations }}
-            <a href="{{ .RelPermalink }}"><img src="/icons/{{ .Lang }}.svg" class="tiny-flag" alt="{{ .Lang }} flag"></a>
+            <a href="{{ .RelPermalink }}"><img src="/icons/{{ .Lang }}.svg" class="tiny-flag" width="28" height="14" alt="{{ .Lang }} flag"></a>
             {{- end -}}
             {{- else -}}
             <!-- Otherwise, redirect it to the homepage -->
             {{- range site.Sites }}
-            <a href="{{ .Home.RelPermalink }}"><img src="/icons/{{ .Language.Lang }}.svg" class="tiny-flag" alt="{{ .Language.Lang }} flag"></a>
+            <a href="{{ .Home.RelPermalink }}"><img src="/icons/{{ .Language.Lang }}.svg" class="tiny-flag" width="28" height="14" alt="{{ .Language.Lang }} flag"></a>
             {{- end -}}
             {{- end }}
         </div>
