@@ -255,6 +255,15 @@ pre {
 
   /* Do not wrap lines of code */
   overflow-x: hidden;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+pre::-webkit-scrollbar {
+  display: none;
 }
 
 /* Inline code (single backticks in markdown) */
