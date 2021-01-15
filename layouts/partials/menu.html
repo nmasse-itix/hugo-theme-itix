@@ -5,14 +5,15 @@
       -- so you can use the :checked selector on it.
       -->
     <input type="checkbox" class="hamburger-menu" id="show-menu" />
-    <!-- Add a label for accessibility -->
-    <label class="hamburger-menu" for="show-menu" style="display: none;" >{{ i18n "show_menu" }}</label>
 
     <!-- Some spans to draw a hamburger. -->
     <div class="hamburger-menu"></div>
     <div class="hamburger-menu"></div>
     <div class="hamburger-menu"></div>
     
+    <!-- Add a label for accessibility -->
+    <label class="hamburger-menu" for="show-menu" style="display: none;" >{{ i18n "show_menu" }}</label>
+
     <!-- And the site title for the mobile browsers -->
     <div class="mobile-title">{{- .Site.Title -}}</div>
 
