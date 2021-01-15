@@ -10,8 +10,8 @@
   translation: Retour en haut de la page
 - id: minutes
   translation:
-    one: '{{ .Count }} minute'
-    other: '{{ .Count }} minutes'
+    one: '{{ .Count }} minute'
+    other: '{{ .Count }} minutes'
 - id: continue_reading
   translation: Continuer la lecture
 - id: articles_related_to
