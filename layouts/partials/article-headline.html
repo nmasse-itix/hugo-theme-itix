@@ -3,7 +3,7 @@
 <h4><a href="{{ .current.RelPermalink }}">{{ .current.Title }}
 {{- partial "lang-detection.html" .current -}}
 {{ if .current.Scratch.Get "en_article_in_fr_site" }}
-    <img src="/icons/en.svg" class="tiny-flag" alt="en flag" width="28" height="14">
+{{- partial "icons/en.svg" . -}}
 {{ end }}
 </a></h4>
 {{- partial "post-metadata.html" . -}}
