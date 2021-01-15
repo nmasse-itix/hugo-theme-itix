@@ -735,10 +735,11 @@ mjx-container {
 
   .menu .menu-content {
     width: 300px;
+    left: -300px;
     height: 100vh;
     background-color: var(--main-background-color);
     position: fixed;
-    transform: translate(-300px, 0);
+    transform: none;
     transition: transform 0.2s linear;
   }
 
@@ -764,7 +765,7 @@ mjx-container {
    * the overlay that hides the article content.
    */
   .menu input.hamburger-menu:checked ~ .menu-content {
-    transform: none;
+    transform: translate(300px, 0);
   }
 
   .menu input.hamburger-menu:checked ~ .menu-overlay {
