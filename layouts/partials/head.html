@@ -26,10 +26,22 @@
 <link rel="preload" href="/icons/en.svg" as="image" type="image/svg+xml">
 <link rel="preload" href="/icons/fr.svg" as="image" type="image/svg+xml">
 
-{{ if .IsHome -}}
-<meta name="description" content="{{ .Site.Params.description }}">
-{{- else -}}
-<meta name="description" content="{{ .Params.description }}">
+<!--
+  -- Ensure the <meta name=description> tag is never empty since it is used
+  -- in the SEO score.
+  -->
+{{- if .IsHome }}
+{{- with .Site.Params.description }}
+<meta name="description" content="{{ . }}">
+{{- else }}
+<meta name="description" content="{{ .Title }}">
+{{- end }}
+{{- else }}
+{{- with .Params.description }}
+<meta name="description" content="{{ . }}">
+{{- else }}
+<meta name="description" content="{{ .Title }}">
+{{- end }}
 {{- end }}
 
 <!-- Tell IE to use the Edge engine -->

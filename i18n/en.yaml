@@ -34,3 +34,5 @@
   translation: Speaking
 - id: type_page
   translation: Misc.
+- id: show_menu
+  translation: Show the menu

@@ -4,8 +4,10 @@
       -- A fake / hidden checkbox is used as click reciever,
       -- so you can use the :checked selector on it.
       -->
-    <input type="checkbox" class="hamburger-menu" />
-    
+    <input type="checkbox" class="hamburger-menu" id="show-menu" />
+    <!-- Add a label for accessibility -->
+    <label class="hamburger-menu" for="show-menu" style="display: none;" >{{ i18n "show_menu" }}</label>
+
     <!-- Some spans to draw a hamburger. -->
     <div class="hamburger-menu"></div>
     <div class="hamburger-menu"></div>

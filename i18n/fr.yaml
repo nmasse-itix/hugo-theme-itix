@@ -34,3 +34,5 @@
   translation: Conférence
 - id: type_page
   translation: Divers
+- id: show_menu
+  translation: Afficher le menu
