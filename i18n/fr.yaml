@@ -36,3 +36,5 @@
   translation: Divers
 - id: show_menu
   translation: Afficher le menu
+- id: file
+  translation: 'Fichier "%s"'

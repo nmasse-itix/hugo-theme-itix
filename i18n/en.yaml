@@ -36,3 +36,5 @@
   translation: Misc.
 - id: show_menu
   translation: Show the menu
+- id: file
+  translation: 'File "%s"'

@@ -285,6 +285,30 @@ pre code {
   padding: 0;
 }
 
+/*
+ * Highlighted file has a wrapping div. Some properties are redefined for it
+ * and reset to their default value for its children.
+ */
+.highlightedFile {
+  background: var(--codeblock-background-color);
+  border-radius: 5px;
+}
+
+.highlightedFile .filename {
+  border-bottom: 2px solid var(--hover-menu-border-color);
+  font-family: var(--sans-preferred-font-list) !important;
+  font-size: larger;
+  padding: 12px 15px;
+}
+
+.highlightedFile pre {
+  background: inherit;
+  border-radius: inherit;
+  padding: 12px 15px;
+  margin: 0;
+}
+
+
 pre:hover {
   /* Show the horizontal scroll bar when hovering code (if needed) */
   overflow-x: auto;
