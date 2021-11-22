@@ -10,8 +10,8 @@
   translation: Top of the page
 - id: minutes
   translation:
-    one: '{{ .Count }} minute'
-    other: '{{ .Count }} minutes'
+    one: '{{ .Count }} minute'
+    other: '{{ .Count }} minutes'
 - id: continue_reading
   translation: Continue reading
 - id: articles_related_to
@@ -34,3 +34,7 @@
   translation: Speaking
 - id: type_page
   translation: Misc.
+- id: show_menu
+  translation: Show the menu
+- id: file
+  translation: 'File "%s"'

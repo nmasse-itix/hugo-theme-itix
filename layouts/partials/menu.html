@@ -4,13 +4,16 @@
       -- A fake / hidden checkbox is used as click reciever,
       -- so you can use the :checked selector on it.
       -->
-    <input type="checkbox" class="hamburger-menu" />
-    
+    <input type="checkbox" class="hamburger-menu" id="show-menu" />
+
     <!-- Some spans to draw a hamburger. -->
     <div class="hamburger-menu"></div>
     <div class="hamburger-menu"></div>
     <div class="hamburger-menu"></div>
     
+    <!-- Add a label for accessibility -->
+    <label class="hamburger-menu" for="show-menu" style="display: none;" >{{ i18n "show_menu" }}</label>
+
     <!-- And the site title for the mobile browsers -->
     <div class="mobile-title">{{- .Site.Title -}}</div>
 
@@ -43,12 +46,12 @@
             {{- if .IsTranslated -}}
             <!-- Try to redirect the user to the translated page if possible -->
             {{- range .AllTranslations }}
-            <a href="{{ .RelPermalink }}"><img src="/icons/{{ .Lang }}.svg" class="tiny-flag" alt="{{ .Lang }} flag"></a>
+            <a href="{{ .RelPermalink }}">{{- partial (printf "icons/%s.svg" .Lang) . -}}</a>
             {{- end -}}
             {{- else -}}
             <!-- Otherwise, redirect it to the homepage -->
             {{- range site.Sites }}
-            <a href="{{ .Home.RelPermalink }}"><img src="/icons/{{ .Language.Lang }}.svg" class="tiny-flag" alt="{{ .Language.Lang }} flag"></a>
+            <a href="{{ .Home.RelPermalink }}">{{- partial (printf "icons/%s.svg" .Language.Lang) . -}}</a>
             {{- end -}}
             {{- end }}
         </div>
