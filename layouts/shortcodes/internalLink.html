@@ -1,0 +1,18 @@
+<!-- This shortcode the HTML link to a localized resource -->
+{{ $path := .Get "path" }}
+{{ $lang := .Get "lang" }}
+{{ $currentLang := .Page.Lang }}
+{{ range .Page.Sites }}
+{{ if eq .Language.Lang $lang }}
+{{ with .GetPage $path }}
+<a href="{{ .RelPermalink }}">
+{{ .Title }}
+</a>
+{{ if ne $currentLang $lang }}
+{{- partial "icons/en.svg" . -}}
+{{ end }}
+{{ else }}
+{{ errorf "shortcode internalLink: Cannot find page %q with lang %q" $path $lang }}
+{{ end }}
+{{ end }}
+{{ end }}
