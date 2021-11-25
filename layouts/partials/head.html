@@ -71,6 +71,10 @@
 <script src="/js/fuse.js"></script>
 {{ end }}
 
+{{- if .Site.Params.enablePlausible -}}
+<script defer data-domain="itix.fr" src="https://plausible.io/js/plausible.js"></script>
+{{- end -}}
+
 {{- if .Params.enableMathJax -}}
   {{- partial "mathjax.html" . -}}
 {{- end -}}
