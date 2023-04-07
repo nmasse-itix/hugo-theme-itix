@@ -11,6 +11,13 @@
     <input id="searchInput" tabindex="0" placeholder="{{ i18n "search_here" }}" autofocus>
     <div id="searchResults">
     </div>
+    <div style="display: none;" id="image-store">
+        {{- range $_, $file := (slice "en" "fr" "label" "link" "schedule") -}}
+        <div id="embedded-svg-{{ $file }}">
+            {{- partial (printf "icons/%s.svg" $file) . -}}
+        </div>
+        {{- end }}
+    </div>
     <script type="text/javascript">
 var searchResults = document.getElementById('searchResults'); // targets the <div> above
 var searchInput = document.getElementById('searchInput'); // input box for search
@@ -36,8 +43,11 @@ function printSearchResult(result) {
     var a = tag("a", { href: result.item.permalink });
     a.textContent = result.item.title;
     if (result.item.hasEnFlag) {
-        var img = tag("img", { src: "/icons/en.svg", 'class': "tiny-flag", alt: "en flag" });
-        a.appendChild(img);
+        var uk_flag_svg = document.getElementById("embedded-svg-en");
+        if (uk_flag_svg != null) {
+            var img = uk_flag_svg.firstChild.cloneNode(true);
+            a.appendChild(img);
+        }
     }
     var h4 = tag("h4");
     h4.textContent = result.item.type_label + " >> ";
@@ -59,9 +69,11 @@ function printSearchResult(result) {
                     return;
                 }
                 var span = tag("span", { 'class': 'topic' });
-                var i = tag("i", { 'class': 'material-icons', 'aria-hidden': 'true'});
-                i.textContent = "link";
-                span.appendChild(i);
+                var link_svg = document.getElementById("embedded-svg-link");
+                if (link_svg != null) {
+                    var img = link_svg.firstChild.cloneNode(true);
+                    span.appendChild(img);
+                }
                 var a = tag("a", { href: topic_detail.href });
                 a.textContent = topic_detail.title;
                 span.appendChild(a);
@@ -75,9 +87,11 @@ function printSearchResult(result) {
                     return;
                 }
                 var span = tag("span", { 'class': 'opensource' });
-                var i = tag("i", { 'class': 'material-icons', 'aria-hidden': 'true'});
-                i.textContent = "label";
-                span.appendChild(i);
+                var label_svg = document.getElementById("embedded-svg-label");
+                if (label_svg != null) {
+                    var img = label_svg.firstChild.cloneNode(true);
+                    span.appendChild(img);
+                }
                 var a = tag("a", { href: opensource_detail.href });
                 a.textContent = opensource_detail.title;
                 span.appendChild(a);
@@ -86,9 +100,11 @@ function printSearchResult(result) {
         }
         if (result.item.reading_time != null) {
             var span = tag("span", { 'class': 'reading-time' });
-            var i = tag("i", { 'class': "material-icons", 'aria-hidden': "true" });
-            i.textContent = "schedule";
-            span.appendChild(i);
+            var schedule_svg = document.getElementById("embedded-svg-schedule");
+                if (schedule_svg != null) {
+                    var img = schedule_svg.firstChild.cloneNode(true);
+                    span.appendChild(img);
+                }
             var readingTime = document.createTextNode(result.item.reading_time);
             span.appendChild(readingTime);
             div.appendChild(span);
