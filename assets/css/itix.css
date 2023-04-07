@@ -143,7 +143,12 @@ h3::before, #TableOfContents > ul > li > ul > li::before {
 }
 
 figcaption::before {
-  content: "Figure " counter(figcaption) " :";
+  /*
+   * When the numbering is done in CSS, we cannot honor typographical
+   * conventions of the user language. So, here I chose the english convention
+   * with no space before the colon and a space after.
+   */
+  content: "Figure " counter(figcaption) ": ";
   counter-increment: figcaption;
 
 }
