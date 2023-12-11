@@ -40,6 +40,11 @@
 {{- end }}
 {{- end }}
 
+<!-- Add all the relevant RSS Feed URLs -->
+{{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{ end }}
+
 <!-- Tell IE to use the Edge engine -->
 <meta name="X-UA-Compatible" content="IE=edge">
 
