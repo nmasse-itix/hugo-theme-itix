@@ -14,5 +14,10 @@
         <a href="{{ relref . "/search/index.md" }}" class="action" title="{{ i18n "search" }}">
             {{- partial "icons/search.svg" . -}}
         </a>
+        {{ with .OutputFormats.Get "rss" -}}
+        <a href="{{ .Permalink }}" class="action" title="{{ i18n "rss_feed" }}">
+            {{- partial "icons/rss_feed.svg" . -}}
+        </a>
+        {{ end }}
     </div>
 </aside>

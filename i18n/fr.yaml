@@ -38,3 +38,5 @@
   translation: Afficher le menu
 - id: file
   translation: 'Fichier "%s"'
+- id: rss_feed
+  translation: 'Flux RSS'
