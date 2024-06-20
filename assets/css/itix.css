@@ -19,6 +19,7 @@
   --codeblock-background-color: #ebf2f9;
   --toc-background-color: #f0f5fa;
   --pagination-disabled-color: #555;
+  --table-border-color: #092949;
 
   /*
    * Layout
@@ -210,9 +211,17 @@ button {
   outline: none !important;
 }
 
-table {
+main table {
     table-layout: fixed;
     overflow-x: scroll;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+}
+
+main table td, main table th {
+  border: 1px solid var(--table-border-color);
+  padding: 0.2rem 0.5rem;
 }
 
 button {
