@@ -1,7 +1,9 @@
 {{ if and .IsTranslated (eq .Lang "fr") }}
-  <!-- Try to compare files by MD5 fingerprint. -->
-  {{ if (index .AllTranslations 0).File }}
-    {{ if eq (index .AllTranslations 0).File.UniqueID (index .AllTranslations 1).File.UniqueID }}
+  <!-- Try to compare files by SH256 fingerprint. -->
+  {{ if and (index .AllTranslations 0).File (index .AllTranslations 1).File }}
+    {{ $file0 := readFile (index .AllTranslations 0).File.Filename }}
+    {{ $file1 := readFile (index .AllTranslations 1).File.Filename }}
+    {{ if eq (sha256 $file0) (sha256 $file1) }}
       {{ .Scratch.Set "en_article_in_fr_site" true }}
     {{ end }}
   {{ else }}
