@@ -3,6 +3,7 @@
   -- Currently, this shortcode can only handle Hugo sites with two languages. -->
 {{ $path := .Get "path" }}
 {{ $currentLang := .Page.Lang }}
+{{ $title := .Get "title" }}
 {{ $sites := .Page.Sites }}
 {{ if ne $currentLang (index .Page.Sites 0).Language.Lang }}
 {{ $sites = collections.Reverse .Page.Sites }}
@@ -10,7 +11,11 @@
 {{ range $sites }}
 {{ with .GetPage $path }}
 <a href="{{ .RelPermalink }}">
+{{ if ne $title "" }}
+{{ $title }}
+{{ else }}
 {{ .Title }}
+{{ end }}
 </a>
 {{ if and (eq $currentLang "en") (eq .Lang "fr") }}
 {{- partial "icons/fr.svg" . -}}
