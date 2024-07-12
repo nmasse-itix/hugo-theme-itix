@@ -12,7 +12,7 @@
     <!-- Skip the item if we are on the term page presenting this item -->
     {{- if or (not $.parent.Data.topic) (ne . $.parent.Data.Term) }}
     <span class="topic">
-        {{- partial "icons/link.svg" . -}}<a href="{{ "/topics/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{- partial "icons/link.svg" . -}}<a href="{{ "/topics/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
     </span>
     {{- end -}}
     {{- end }}
@@ -22,7 +22,7 @@
     <!-- Skip the item if we are on the term page presenting this item -->
     {{- if or (not $.parent.Data.opensource) (ne . $.parent.Data.Term) }}
     <span class="opensource">
-        {{- partial "icons/label.svg" . -}}<a href="{{ "/opensource/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{- partial "icons/label.svg" . -}}<a href="{{ "/opensource/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
     </span>
     {{- end -}}
     {{- end }}
