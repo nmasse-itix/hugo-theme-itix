@@ -1,18 +1,26 @@
-<!-- This shortcode the HTML link to a localized resource -->
+<!-- This shortcode generates the HTML link to an internal resource, which can be translated or not.
+  -- It displays a country flag when the target page is in a different language than the current page.
+  -- Currently, this shortcode can only handle Hugo sites with two languages. -->
 {{ $path := .Get "path" }}
-{{ $lang := .Get "lang" }}
 {{ $currentLang := .Page.Lang }}
-{{ range .Page.Sites }}
-{{ if eq .Language.Lang $lang }}
+{{ $sites := .Page.Sites }}
+{{ if ne $currentLang (index .Page.Sites 0).Language.Lang }}
+{{ $sites = collections.Reverse .Page.Sites }}
+{{ end }}
+{{ range $sites }}
 {{ with .GetPage $path }}
 <a href="{{ .RelPermalink }}">
 {{ .Title }}
 </a>
-{{ if ne $currentLang $lang }}
+{{ if and (eq $currentLang "en") (eq .Lang "fr") }}
+{{- partial "icons/fr.svg" . -}}
+{{ end }}
+{{ if (eq $currentLang "fr") }}
+{{- partial "lang-detection.html" . -}}
+{{ if .Scratch.Get "en_article_in_fr_site" }}
 {{- partial "icons/en.svg" . -}}
 {{ end }}
-{{ else }}
-{{ errorf "shortcode internalLink: Cannot find page %q with lang %q" $path $lang }}
 {{ end }}
+{{ break }}
 {{ end }}
 {{ end }}
